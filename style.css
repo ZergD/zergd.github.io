@@ -1,3 +1,20 @@
-#gameScreen{
+body{
+    width: 800;
+    height: 600;
+}
+
+/*#mainDiv{
+    height: 900;
+    width: 700;
+    border: 2px solid blue;
+
+}*/
+
+#mainDiv{
     margin-left: 15px;
+}
+
+
+#gameScreen{
+    background: darkgray;
 }
