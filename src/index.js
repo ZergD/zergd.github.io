@@ -21,9 +21,20 @@ let lastTime = 0;
 
 new InputHandler(paddle);
 
+// we draw image loaded in html
+let img_ball = document.getElementById("imgBall");
+
+ctx.drawImage(img_ball, 250, 250);
+
+
+
 
 // main game loop
 //gameLoop();
+
+
+
+
 
 
 /////////////////////// FUNCTIONS PART ///////////////////////
