@@ -11,7 +11,6 @@ export default class Game{
     start(){
         this.paddle = new Paddle(this);
         this.ball = new Ball(this);
-
         this.gameObjects = [this.ball, this.paddle];
         
         new InputHandler(this.paddle);

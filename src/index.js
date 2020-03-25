@@ -28,4 +28,4 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
 };
 // main game loop
-//requestAnimationFrame(gameLoop);
+requestAnimationFrame(gameLoop);
