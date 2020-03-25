@@ -7,3 +7,13 @@ function load_background(){
     console.log(bdy);
 
 };
+
+function add_image(){
+    const mainDiv = document.getElementById("mainDiv");
+    const background_img = new Image();
+    background_img.src = "imgs/background_img.jpg";
+    background_img.onload = () => {
+        
+        mainDiv.appendChild(background_img, 0, 0);
+    }
+};

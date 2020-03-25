@@ -20,16 +20,13 @@ export default class Paddle{
     draw(ctx){
         ctx.fillStyle = "green";
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-        console.log("The paddle got drawn");
     }
 
     moveLeft(){
-        console.log("we moved left")
         this.speed = -this.maxSpeed;
     }
     
     moveRight(){
-        console.log("we moved right")
         this.speed = this.maxSpeed;
     }
 

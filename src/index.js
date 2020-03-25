@@ -7,15 +7,7 @@ let ctx = canvas.getContext("2d");
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
     
-// ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-
- const mainDiv = document.getElementById("mainDiv");
- const background_img = new Image();
- background_img.src = "imgs/background_img.jpg";
- background_img.onload = () => {
-     
-     mainDiv.appendChild(background_img, 0, 0);
- }
+//add_image();
 
 ctx.fillStyle = "#f00";
 ctx.fillRect(20, 18, 100, 98);
@@ -29,6 +21,12 @@ let lastTime = 0;
 
 new InputHandler(paddle);
 
+
+// main game loop
+//gameLoop();
+
+
+/////////////////////// FUNCTIONS PART ///////////////////////
 function gameLoop(timestamp) {
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp
@@ -42,8 +40,6 @@ function gameLoop(timestamp) {
 
     paddle.update(deltaTime);
     paddle.draw(ctx);
-
+    
     requestAnimationFrame(gameLoop);
-}
-
-gameLoop();
+};
