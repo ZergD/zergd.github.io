@@ -16,6 +16,12 @@ export default class Paddle{
             y: gameHeight - this.height - 10,
         }
     }
+    
+    draw(ctx){
+        ctx.fillStyle = "green";
+        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        console.log("The paddle got drawn");
+    }
 
     moveLeft(){
         console.log("we moved left")
@@ -27,10 +33,8 @@ export default class Paddle{
         this.speed = this.maxSpeed;
     }
 
-    draw(ctx){
-        ctx.fillStyle = "green";
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-        console.log("The paddle got drawn");
+    stop(){
+        this.speed = 0
     }
 
     update(deltaTime){
@@ -38,10 +42,10 @@ export default class Paddle{
         
         this.position.x += this.speed;
 
-        if(this.position.x + this.width + this.speed >= this.gameWidth){
+        if(this.position.x + this.width >= this.gameWidth){
             this.position.x = this.gameWidth - this.width;
         }
-        if(this.position.x + this.speed < 0){
+        if(this.position.x < 0){
             this.position.x = 0;
         }
     }
