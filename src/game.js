@@ -18,14 +18,10 @@ export default class Game{
     }
 
     update(deltaTime){
-        // this.ball.update(deltaTime);
-        // this.paddle.update(deltaTime);
         this.gameObjects.forEach(object => object.update(deltaTime));
     }
 
     draw(ctx){
-        // this.paddle.draw(ctx);
-        // this.ball.draw(ctx);
         this.gameObjects.forEach(object => object.draw(ctx));
     }
 }
