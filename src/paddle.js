@@ -1,5 +1,3 @@
-console.log("paddle hello");
-
 export default class Paddle{
 
     constructor(game){
