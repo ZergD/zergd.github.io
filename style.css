@@ -3,7 +3,7 @@ body{
     height: 600;
 }
 
-#imgBall{
+#imgBall, #imgBrick{
     display: none;
 }
 

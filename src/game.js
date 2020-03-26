@@ -1,6 +1,7 @@
 import Paddle from '/src/paddle.js';
 import InputHandler from '/src/input.js';
 import Ball from '/src/ball.js';
+import Brick from './brick.js';
 
 export default class Game{
     constructor(gameWidth, gameHeight){
@@ -9,11 +10,14 @@ export default class Game{
     }
 
     start(){
+        this.brick = new Brick(this);
+        
         this.paddle = new Paddle(this);
         this.ball = new Ball(this);
-        this.gameObjects = [this.ball, this.paddle];
+        this.gameObjects = [this.ball, this.paddle, this.brick];
         
         new InputHandler(this.paddle);
+        
     }
 
     update(deltaTime){

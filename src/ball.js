@@ -4,7 +4,7 @@ export default class Ball{
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.image = document.getElementById("imgBall");
-        this.position = { x: 10, y: 10 };
+        this.position = { x: 10, y: 100 };
         this.speed = { x: 3, y: 2 };
         // this.speed = { x: 0.1, y: 0.1 };
         this.size = 40;
