@@ -11,7 +11,7 @@ export default class Game{
     }
 
     start(){
-        const bricks = buildLevel(this, level1);
+        let bricks = buildLevel(this, level1);
         this.ball = new Ball(this);
         this.paddle = new Paddle(this);
 

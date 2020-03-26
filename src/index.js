@@ -25,6 +25,9 @@ function gameLoop(timestamp) {
 
     game.draw(ctx)
     
+    // setTimeout(function(){
+    //     requestAnimationFrame(gameLoop);
+    // }, 0.1);
     requestAnimationFrame(gameLoop);
 };
 // main game loop
