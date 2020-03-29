@@ -8,12 +8,13 @@ export default class Ball {
         this.image = document.getElementById("imgBall");
         this.position = { x: 10, y: 300 };
         // this.speed = { x: 3, y: 4 };
-        this.speed = { x: 3, y: 3 };
+        this.speed = { x: 5, y: 5 };
         this.size = 35;
     }
 
     draw(ctx) {
-        ctx.strokeRect(this.position.x, this.position.y, this.size, this.size);
+        // draws square borders
+        // ctx.strokeRect(this.position.x, this.position.y, this.size, this.size);
         ctx.drawImage(this.image, this.position.x,
             this.position.y, this.size, this.size);
     }
