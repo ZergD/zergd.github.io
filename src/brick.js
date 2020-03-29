@@ -8,6 +8,8 @@ export default class Brick{
         this.position = position;
         this.width = 100;
         this.height = 30;
+        // flag when to be deleted
+        this.marked_for_deletion = false;
     }
 
     draw(ctx){
@@ -17,9 +19,8 @@ export default class Brick{
 
     update(deltaTime){
         if (detectCollision(this.game.ball, this)){
-            console.log("collision with brick detected");
             this.game.ball.speed.y = -(this.game.ball.speed.y);
-            console.log(this.game.ball.speed);
+            this.marked_for_deletion = true;
         }
     }
 }
