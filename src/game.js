@@ -31,7 +31,7 @@ export default class Game{
     }
 
     update(deltaTime){
-        if ( this.gameState === GAMESTATE.PAUSED) return;
+        if ( this.gameState == GAMESTATE.PAUSED) return;
         this.gameObjects.forEach(object => object.update(deltaTime));
 
         this.gameObjects = this.gameObjects.filter(object => !object.marked_for_deletion);
@@ -44,6 +44,18 @@ export default class Game{
 
     draw(ctx){
         this.gameObjects.forEach(object => object.draw(ctx));
+
+        // draw pause screen
+        if(this.gameState == GAMESTATE.PAUSED) {
+            ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; 
+            ctx.fill();
+
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText("Paused", this.gameWidth / 2, this.gameHeight / 2);
+        }
     }
 
     togglePause(){
