@@ -20,6 +20,12 @@ export function buildLevel(game, level){
     return bricks;
 };
 
+export const levelTest = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1]
+];
+
 export const level0 = [
     [0, 1, 0],
     [1, 1, 1],
