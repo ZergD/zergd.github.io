@@ -5,16 +5,23 @@ export default class InputHandler{
             //console.log(event.keyCode);
             switch(event.keyCode){
                 case 37:
-                    console.log("Left pressed...")
+                    console.log("Left pressed...");
                     paddle.moveLeft();
                     break;
                 case 39:
-                    console.log("Right pressed...")
+                    console.log("Right pressed...");
                     paddle.moveRight();
                     break;
                 // echap key
                 case 27:
                     game.togglePause();
+                    break;
+                // spaceBar key
+                case 32:
+                    //game.start();
+                    console.log("spaceBar was pressed");
+                    game.start()
+                    break;
             }
         });
         

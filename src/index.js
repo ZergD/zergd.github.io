@@ -9,9 +9,6 @@ const GAME_HEIGHT = 600;
 // initialize the game
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
 
-// start the game
-game.start();
-
 let lastTime = 0;
 //add_image();
 /////////////////////// FUNCTIONS PART ///////////////////////

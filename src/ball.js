@@ -1,3 +1,4 @@
+import TrailShadow from "/src/TrailShadow.js";
 import { detectCollision } from "/src/collisionDetection.js";
 
 export default class Ball {
@@ -6,10 +7,15 @@ export default class Ball {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.image = document.getElementById("imgBall");
-        this.position = { x: 10, y: 300 };
-        // this.speed = { x: 3, y: 4 };
-        this.speed = { x: 5, y: 5 };
+        // this.speed = { x: 5, y: 5 };
         this.size = 35;
+        this.reset();
+    }
+
+    reset(){
+        this.oldPosition = { x: null, y: null };
+        this.speed = { x: 2, y: 2 };
+        this.position = { x: 10, y: 300 };
     }
 
     draw(ctx) {
@@ -17,6 +23,19 @@ export default class Ball {
         // ctx.strokeRect(this.position.x, this.position.y, this.size, this.size);
         ctx.drawImage(this.image, this.position.x,
             this.position.y, this.size, this.size);
+
+        // draw it's shadow trail, a line for the moment
+        // if ( this.oldPosition.x != null ){
+        //     ctx.beginPath();
+        //     ctx.arc(this.oldPosition.x, this.oldPosition.y, 10, 0, 2 * Math.PI);
+        //     ctx.fill();
+        //     let x = this.oldPosition.x;
+        //     let y = this.oldPosition.y;
+        //     this.game.gameObjects.push(new TrailShadow(x, y));
+            // this.gameObjects.push(new TrailShadow(x, y));
+            // ctx.stroke();
+        //}
+        
     }
 
     update(deltaTime) {
@@ -30,8 +49,13 @@ export default class Ball {
         }
 
         // wall up and down
-        if (this.position.y + this.size > this.gameHeight || this.position.y < 0) {
+        if (this.position.y < 0) {
             this.speed.y = -this.speed.y;
+        }
+
+        if (this.position.y + this.size > this.gameHeight){
+            this.game.lives --;
+            this.reset();
         }
 
         // collision with paddle
@@ -39,5 +63,10 @@ export default class Ball {
                 this.speed.y = -this.speed.y;
                 this.position.y = this.game.paddle.position.y - this.size;
         }
+        this.oldPosition = this.position;
+    }
+    
+    create_trail_shadow(){
+
     }
 }
