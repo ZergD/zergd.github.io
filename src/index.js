@@ -1,10 +1,13 @@
 import Game from '/src/game.js';
 
 let canvas = document.getElementById("gameScreen");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+console.log(window.innerWidth);
 let ctx = canvas.getContext("2d");
 
-const GAME_WIDTH = 800;
-const GAME_HEIGHT = 600;
+let GAME_WIDTH = canvas.width;
+let GAME_HEIGHT = canvas.height;
     
 // initialize the game
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);

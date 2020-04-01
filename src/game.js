@@ -2,7 +2,7 @@ import Paddle from '/src/paddle.js';
 import InputHandler from '/src/input.js';
 import Ball from '/src/ball.js';
 import Brick from '/src/brick.js';
-import TrailShadow from "/src/trailShadow.js";
+//import TrailShadow from "/src/trailShadow.js";
 import { buildLevel, level0, level1, levelTest } from './levels.js';
 
 const GAMESTATE = {

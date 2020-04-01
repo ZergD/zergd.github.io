@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <style>
         #gameScreen{
-            border: 1px solid black;
+            /* border: 1px solid black; */
         }
     </style>
     <link rel="stylesheet" href="style.css">
@@ -13,11 +13,13 @@
 
 <body>
     <div id="mainDiv">
+        <!-- Hidden images at first -->
         <img id="imgBall" src="imgs/final_game_ball_transparent_80.png">
         <img id="imgBrick" src="imgs/small_brick.jpg">
-        <canvas id="gameScreen" width="800" height="600"></canvas>
+
+        <canvas id="gameScreen"></canvas>
         
-        <img id="imgBackground" src="imgs/background_img.jpg">
+        <!-- <img id="imgBackground" src="imgs/background_img.jpg"> -->
 
         <script src="src/utils.js"></script>
         <script src="src/index.js" type="module"></script>

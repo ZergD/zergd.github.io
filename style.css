@@ -1,6 +1,9 @@
 body{
-    width: 800;
-    height: 600;
+    margin: 0;
+}
+
+canvas{
+    margin: 0;
 }
 
 #imgBall, #imgBrick{
@@ -15,11 +18,12 @@ body{
 
 }*/
 
-#mainDiv{
+/*#mainDiv{
     margin-left: 15px;
-}
+}*/
 
 
 #gameScreen{
-    background: darkgray;
+   /* background: darkgray;
+   */
 }
