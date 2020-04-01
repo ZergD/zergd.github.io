@@ -16,7 +16,8 @@ const GAMESTATE = {
 
 
 export default class Game{
-    constructor(gameWidth, gameHeight){
+    constructor(ctx, gameWidth, gameHeight){
+        this.c = ctx;
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
         this.gameState = GAMESTATE.MENU;
@@ -89,7 +90,7 @@ export default class Game{
         // this.gameObjects.forEach(object => object.draw(ctx));
         [...this.gameObjects, ...this.bricks].forEach(object => object.draw(ctx));
         
-
+G
         // draw pause screen
         if(this.gameState == GAMESTATE.PAUSED) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
@@ -134,6 +135,14 @@ export default class Game{
             this.gameState = GAMESTATE.RUNNING;
         }
         console.log("game was toggled");
+    }
+
+    draw_circle(x, y){
+        this.c.beginPath();
+        this.c.arc(x, y, 50, 0, Math.PI * 2);
+        this.c.fillStyle = "cyan";
+        this.c.fill();
+        this.c.closePath();        
     }
 }
 

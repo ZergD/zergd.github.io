@@ -35,5 +35,12 @@ export default class InputHandler{
                     break;
             }
         });
+
+        document.addEventListener("click", event => {
+            let x = event.clientX;
+            let y = event.clientY;
+            console.log(x, y);
+            game.draw_circle(x, y);
+        })
     }
 }

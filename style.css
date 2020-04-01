@@ -4,6 +4,7 @@ body{
 
 canvas{
     margin: 0;
+    background: rgb(32, 32, 57);
 }
 
 #imgBall, #imgBrick{
