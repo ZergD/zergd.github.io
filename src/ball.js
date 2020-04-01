@@ -1,4 +1,3 @@
-import TrailShadow from "/src/TrailShadow.js";
 import { detectCollision } from "/src/collisionDetection.js";
 
 export default class Ball {
@@ -31,8 +30,6 @@ export default class Ball {
         //     ctx.fill();
         //     let x = this.oldPosition.x;
         //     let y = this.oldPosition.y;
-        //     this.game.gameObjects.push(new TrailShadow(x, y));
-            // this.gameObjects.push(new TrailShadow(x, y));
             // ctx.stroke();
         //}
         
