@@ -9,7 +9,7 @@
   "author": "Metarch D",
   "license": "ISC",
   "devDependencies": {
-    "minimist": ">=1.2.2",
+    "minimist": ">=1.2.3",
     "lite-server": "^2.5.4"
   }
 }
