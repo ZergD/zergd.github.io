@@ -6,8 +6,9 @@ body{
 }
 
 canvas{
-    margin: 0;
+    /* margin: 5; */
     background: rgb(32, 32, 57);
+    /* border: 1px solid chocolate; */
 }
 
 #imgBall, #imgBrick{

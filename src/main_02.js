@@ -10,7 +10,7 @@ let GAME_WIDTH = canvas.width;
 let GAME_HEIGHT = canvas.height;
 let BOT_SEPARATION_HEIGHT = GAME_HEIGHT - 100;
 
-//draw_bot_separation();
+draw_bot_separation();
 
 function draw_bot_separation(){
     ctx.beginPath();
@@ -18,7 +18,7 @@ function draw_bot_separation(){
     ctx.moveTo(0, BOT_SEPARATION_HEIGHT)
     // to
     ctx.lineTo(GAME_WIDTH, BOT_SEPARATION_HEIGHT);
-    ctx.fillStyle = "10px solid white";
+    ctx.strokeStyle = "white";
     ctx.stroke();
 }
 
@@ -31,7 +31,7 @@ const mouse = {
 addEventListener("mousemove", event => {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
-    display_coords(mouse.x, mouse.y);
+    display_coords_real_time(mouse.x, mouse.y);
     //animateCircles(mouse.x, mouse.y);
 });
 
@@ -73,13 +73,15 @@ Circle.prototype.draw = function(){
 
 }
 
-function display_coords(x, y){
+function display_coords_real_time(x, y){
     ctx.clearRect(0, BOT_SEPARATION_HEIGHT + 10, GAME_WIDTH, GAME_HEIGHT);
+    //ctx.rect(0.5, BOT_SEPARATION_HEIGHT + 1, GAME_WIDTH, GAME_HEIGHT);
     let text = "" + x + " " + y
     ctx.font = "30px Arial";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(text, 75, GAME_HEIGHT - 50);
+    
 };
 
 // Object.prototype.update = function(){
@@ -173,7 +175,6 @@ function whichButton(event){
 
 
 
-console.log("hello");
 //init();
 // const interval = setInterval(function() {
 //     doJob();
@@ -320,17 +321,20 @@ console.log("hello");
 //     }
 // };
 
-Sketch.create({
-    setup() {
-      this.r = this.g = this.b = random(100, 200)
-    },
-    mousemove() {
-      this.r = 255 * (this.mouse.x / this.width)
-      this.g = 255 * (this.mouse.y / this.height)
-      this.b = 255 * abs(cos(PI * this.mouse.y / this.width))
-    },
-    draw() {
-      this.fillStyle = `rgb(${~~this.r},${~~this.g},${~~this.b})`
-      this.fillRect(0, 0, this.width, this.height)
-    }
-  })
+// Sketch.create({
+//     setup() {
+//       this.r = this.g = this.b = random(100, 200)
+//     },
+//     mousemove() {
+//       this.r = 255 * (this.mouse.x / this.width)
+//       this.g = 255 * (this.mouse.y / this.height)
+//       this.b = 255 * abs(cos(PI * this.mouse.y / this.width))
+//     },
+//     draw() {
+//       this.fillStyle = `rgb(${~~this.r},${~~this.g},${~~this.b})`
+//       this.fillRect(0, 0, this.width, this.height)
+//     }
+//   })
+
+
+console.log("hello");
