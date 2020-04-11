@@ -31,8 +31,6 @@ function display_coords_real_time(event_res, screen_position_display, ctx, canva
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(text, screen_position_display.x, screen_position_display.y);
-    console.log("printing " + text);
-    console.log(screen_position_display);
     
 };
 

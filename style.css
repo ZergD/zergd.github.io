@@ -1,15 +1,13 @@
-body{
+html, body{
     width: 100%;
     height: 100%;
-    margin: 0;
     background: rgb(32, 32, 57);
+    margin: 0;
 }
 
-canvas{
-    /* margin: 5; */
-    background: rgb(32, 32, 57);
-    /* border: 1px solid chocolate; */
-}
+/* canvas{
+    border: 1px solid chocolate;
+} */
 
 #imgBall, #imgBrick{
     display: none;
@@ -40,3 +38,4 @@ canvas{
     position: absolute;
     border-radius: 15px;
 }
+

@@ -38,3 +38,8 @@ function test1(){
     let words = ["hello", "dear", "human"];
 
 }
+
+
+let canvas = document.getElementById("gameScreen");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;

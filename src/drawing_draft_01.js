@@ -4,11 +4,12 @@
 console.log("loaded drawing_draft_01 files");
 
 let canvas = document.getElementById("gameScreen");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 // c will be for context for all documents
 let c = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
 let screen_position_display = {
     x: 75,
@@ -24,7 +25,6 @@ addEventListener("mousemove", event => {
         y : y
     }
     display_coords_real_time(event_res, screen_position_display, c, canvas.width, canvas.height);
-    //animateCircles(mouse.x, mouse.y);
 });
 
 //---------------------------------------------------- MAIN  ----------------------------------------------------
