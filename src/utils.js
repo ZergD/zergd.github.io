@@ -57,3 +57,10 @@ function context_draw(c_arg, rect, color){
     c_arg.fillStyle = color;
     c_arg.fillRect(rect.x, rect.y, rect.width, rect.height);
 }
+
+function reset_screen(c_arg, ){
+    // c = canvas.context
+    // same as clearRect context function just with rect object
+    c_arg.clearRect(rect.x, rect.y, rect.width, rect.height);
+
+}

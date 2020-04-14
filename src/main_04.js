@@ -48,13 +48,40 @@ canvas.height = window.innerHeight;
 // c will always be for context
 let c = canvas.getContext("2d");
 
-// create and position rectangle
-let my_obj = {
-    x: 100,
+// create and position walls
+let wall_side_offsets = 100;
+let wall_width = 50;
+
+let left_wall = { 
+    x: wall_side_offsets,
     y: 100,
-    width: 300,
+    width: wall_width,
+    height: 500 
+}
+let right_wall = { 
+    x: canvas.width - wall_side_offsets - wall_width,
+    y: 100,
+    width: 50,
     height: 500
 }
 
-context_draw(c, my_obj, "green");
+context_draw(c, left_wall, "green");
+context_draw(c, right_wall, "green");
+let x = canvas.width / 2;
+let y = canvas.height / 2;
+console.log(x, y);
 
+function run_loop(){
+    //c.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
+    
+    c.fillStyle = "white";
+    c.beginPath();
+    c.arc(x, y, 50, 0, 2 * Math.PI, false);
+    c.fill();
+    c.save();
+    c.translate(0.5, 0.5);
+    console.log("drawing");
+    window.requestAnimationFrame(run_loop);
+}
+
+//window.requestAnimationFrame(run_loop);
