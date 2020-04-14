@@ -73,15 +73,33 @@ console.log(x, y);
 
 function run_loop(){
     //c.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
-    
+   
+    var time = new Date();
     c.fillStyle = "white";
     c.beginPath();
     c.arc(x, y, 50, 0, 2 * Math.PI, false);
     c.fill();
     c.save();
     c.translate(0.5, 0.5);
+    //c.rotate(
+    //    ((2 * Math.PI) / 10) * time.getSeconds() +
+    //    ((2 * Math.PI) / 10000) * time.getMilliseconds()
+    //    );
+    
+    c.translate(105, 0);
+
     console.log("drawing");
     window.requestAnimationFrame(run_loop);
 }
 
 //window.requestAnimationFrame(run_loop);
+
+c.beginPath();
+c.fillStyle = "white";
+c.moveTo(x, y); // top triangle isocele looking up
+c.lineTo(x - 50, y + 100);
+c.lineTo(x + 50, y + 100);
+c.fill();
+//c.closePath();
+//c.stroke();
+
