@@ -1,0 +1,147 @@
+<html>
+
+<head>
+    <title>Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+</head>
+</head>
+
+<body>
+    <!-- <script src="/imported_from/sketch.min.js"></script> -->
+    <div id="mainDiv">
+        <!-- <button>Start Animation</button> -->
+        <!-- <div style="background: red; width:200; height:100px; position:absolute;">Div to move</div> -->
+        <!-- Hidden images at first -->
+        <img id="imgBall" src="imgs/final_game_ball_transparent_80.png">
+        <img id="imgBrick" src="imgs/small_brick.jpg">
+
+        <canvas id="gameScreen"></canvas>
+        
+        <!-- <img id="imgBackground" src="imgs/background_img.jpg"> -->
+
+        <script src="src/utils.js" ></script>
+        <!-- <script src="src/index.js" type="module"></script> -->
+        <!-- <script src="test_move_objects.js" type="module"></script> -->
+        <!-- <script src="src/main_02.js" type="module"></script> -->
+        <script src="src/main_03.js" type="module"></script>
+        <!-- <script src="src/main_04.js" type="module"></script> -->
+        <!-- <script src="src/drawing_draft_01.js" ></script> -->
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+        <!-- <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                $("div").animate({left: '550px'});
+                });
+            });
+        </script> -->
+        <!-- <script>
+            $(function(){
+            
+                var canvas=document.getElementById("gameScreen");
+                canvas.width = 800;
+                canvas.height = 600;
+                var ctx=canvas.getContext("2d");
+            
+                var canvasOffset=$("#gameScreen").offset();
+                var offsetX=canvasOffset.left;
+                var offsetY=canvasOffset.top;
+            
+                var startX;
+                var startY;
+                var isDown=false;
+                var dragTarget;
+            
+                var boxes=[];
+                boxes.push({x:50,y:25,w:75,h:50});    // x,y,width,height
+                boxes.push({x:200,y:100,w:50,h:50});
+            
+            
+                var connectors=[];
+                connectors.push({box1:0,box2:1});
+            
+                draw();
+            
+                function draw(){
+            
+                    // clear the canvas
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
+            
+                    for(var i=0;i<boxes.length;i++){
+                        var box=boxes[i];
+                        ctx.fillRect(box.x,box.y,box.w,box.h);
+                    }
+                    for(var i=0;i<connectors.length;i++){
+                        var connector=connectors[i];
+                        var box1=boxes[connector.box1];
+                        var box2=boxes[connector.box2];
+                        ctx.beginPath();
+                        ctx.moveTo(box1.x+box1.w/2,box1.y+box1.h/2);
+                        ctx.lineTo(box2.x+box2.w/2,box2.y+box2.h/2);
+                        ctx.stroke();
+                    }
+            
+                }
+            
+                function hit(x,y){
+                    for(var i=0;i<boxes.length;i++){
+                        var box=boxes[i];
+                        if(x>=box.x && x<=box.x+box.w && y>=box.y && y<=box.y+box.h){
+                            dragTarget=box;
+                            return(true);
+                        }
+                    }
+                    return(false);
+                }
+            
+                function handleMouseDown(e){
+                  startX=parseInt(e.clientX-offsetX);
+                  startY=parseInt(e.clientY-offsetY);
+                  // Put your mousedown stuff here
+                  isDown=hit(startX,startY);
+                  console.log("clicked mouse down");
+                }
+            
+                function handleMouseUp(e){
+                  // Put your mouseup stuff here
+                  dragTarget=null;
+                  isDown=false;
+                }
+            
+                function handleMouseOut(e){
+                    handleMouseUp(e);
+                }
+            
+                function handleMouseMove(e){
+                  if(!isDown){return;}
+            
+                  mouseX=parseInt(e.clientX-offsetX);
+                  mouseY=parseInt(e.clientY-offsetY);
+            
+                  // Put your mousemove stuff here
+                  var dx=mouseX-startX;
+                  var dy=mouseY-startY;
+                  startX=mouseX;
+                  startY=mouseY;
+                  dragTarget.x+=dx;
+                  dragTarget.y+=dy;
+                  draw();
+                }
+            
+                $("#canvas").mousedown(function(e){handleMouseDown(e);});
+                $("#canvas").mousemove(function(e){handleMouseMove(e);});
+                $("#canvas").mouseup(function(e){handleMouseUp(e);});
+                $("#canvas").mouseout(function(e){handleMouseOut(e);});
+                console.log("script was launched");
+            
+            }); // end $(function(){});
+            </script> -->
+
+    </div>
+</body>
+
+
+</html>
+
+

@@ -35,12 +35,11 @@ addEventListener("mousemove", event => {
     //animateCircles(mouse.x, mouse.y);
 });
 
-// addEventListener("mousedown", event => {
 addEventListener("mousedown", event => {
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
-    whichButton(event);
-    drawCircle(mouse.x, mouse.y);
+   mouse.x = event.clientX;
+   mouse.y = event.clientY;
+   whichButton(event);
+   //drawCircle(mouse.x, mouse.y);
 });
 
 addEventListener("resize", () => {
@@ -84,12 +83,12 @@ function display_coords_real_time(x, y){
     
 };
 
-// Object.prototype.update = function(){
-//     this.draw();
-// 
-//     this.x += this.velocity.x;
-//     this.y += this.velocity.y;
-// }
+Object.prototype.update = function(){
+    this.draw();
+
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+}
 
 let circles = [];
 function init(){
@@ -189,7 +188,7 @@ function draw(){
     ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
     for (let i = 0; i < boxes.length; i++){
-        box = boxes[i];
+        let box = boxes[i];
         ctx.fillRect(box.x, box.y, box.w, box.h);
     }
 
@@ -203,3 +202,5 @@ function draw(){
         ctx.stroke();
     }
 }
+
+draw();

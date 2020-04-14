@@ -1,3 +1,4 @@
+//import "/src/utils.js";
 
 function test1(){
     console.log("hello");
@@ -43,3 +44,17 @@ function test1(){
 let canvas = document.getElementById("gameScreen");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+// c will always be for context
+let c = canvas.getContext("2d");
+
+// create and position rectangle
+let my_obj = {
+    x: 100,
+    y: 100,
+    width: 300,
+    height: 500
+}
+
+context_draw(c, my_obj, "green");
+

@@ -13,6 +13,7 @@
     "minimist": "^1.2.5"
   },
   "dependencies": {
+    "gojs": "^2.1.13",
     "jquery": "^3.4.1"
   }
 }

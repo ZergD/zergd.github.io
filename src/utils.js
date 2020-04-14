@@ -48,3 +48,12 @@ function display_coords_real_time(event_res, screen_position_display, ctx, canva
 // });
 // 
 // 
+
+
+function context_draw(c_arg, rect, color){
+    // given a 2D canvas context: c_arg
+    // object rectangle (x, y, w, h): rect
+    // and color it draws a rectangle
+    c_arg.fillStyle = color;
+    c_arg.fillRect(rect.x, rect.y, rect.width, rect.height);
+}
