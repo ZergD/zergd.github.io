@@ -64,7 +64,7 @@ Example.gravity = function() {
 
     // add bodies
     World.add(world, [
-        Bodies.rectangle(300, 0, 800, 50, { isStatic: true }), // top wall
+        Bodies.rectangle(250, 0, 800, 50, { isStatic: true }), // top wall
         Bodies.rectangle(400, 600, 800, 50.5, { isStatic: true }), // bot wall
         Bodies.rectangle(800, 300, 50, 600, { isStatic: true }), // right wall
         Bodies.rectangle(0, 300, 50, 600, { isStatic: true }) // left wall
@@ -112,6 +112,7 @@ Example.gravity = function() {
         max: { x: 800, y: 600 }
     });
 
+
     // context for MatterTools.Demo
     return {
         engine: engine,
@@ -127,3 +128,11 @@ Example.gravity = function() {
 
 
 Example.gravity();
+
+function inverse_gravity(engine_){
+    engine_.world.gravity.y *= -1;
+
+}
+
+
+//window.setTimeout(inverse_gravity(engine), 2000);
