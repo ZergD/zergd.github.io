@@ -1,40 +1,10 @@
-// module aliases
-// var Engine = Matter.Engine,
-//     Render = Matter.Render,
-//     World = Matter.World,
-//     Bodies = Matter.Bodies;
-// 
-// // create an engine
-// var engine = Engine.create();
-// 
-// // create a renderer
-// var render = Render.create({
-//     element: document.body,
-//     engine: engine
-// });
-// 
-// // create two boxes and a ground
-// var boxA = Bodies.rectangle(400, 200, 80, 80);
-// var boxB = Bodies.rectangle(450, 50, 80, 80);
-// var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
-// 
-// // add all of the bodies to the world
-// World.add(engine.world, [boxA, boxB, ground]);
-// 
-// // run the engine
-// Engine.run(engine);
-// 
-// // run the renderer
-// Render.run(render);
-
 var Example = Example || {};
 
-Example.gravity = function() {
+Example.car = function() {
     var Engine = Matter.Engine,
         Render = Matter.Render,
         Runner = Matter.Runner,
         Composites = Matter.Composites,
-        Common = Matter.Common,
         MouseConstraint = Matter.MouseConstraint,
         Mouse = Matter.Mouse,
         World = Matter.World,
@@ -49,10 +19,10 @@ Example.gravity = function() {
         element: document.body,
         engine: engine,
         options: {
-            width: window.innerWidth,
-            height: window.innerHeight,
-            showVelocity: true,
-            showAngleIndicator: true
+            width: 800,
+            height: 1200,
+            showAngleIndicator: true,
+            showCollisions: true
         }
     });
 
@@ -64,30 +34,33 @@ Example.gravity = function() {
 
     // add bodies
     World.add(world, [
-        Bodies.rectangle(250, 0, 800, 50, { isStatic: true }), // top wall
-        Bodies.rectangle(400, 600, 800, 50.5, { isStatic: true }), // bot wall
-        Bodies.rectangle(800, 300, 50, 600, { isStatic: true }), // right wall
-        Bodies.rectangle(0, 300, 50, 600, { isStatic: true }) // left wall
+        // walls
+        Bodies.rectangle(400, -300, 800, 50, { isStatic: true }), // top
+        Bodies.rectangle(400, 1200, 800, 50, { isStatic: true }), // bot
+        Bodies.rectangle(850, 400, 50, 1500, { isStatic: true }), // right
+        Bodies.rectangle(-50, 400, 50, 1500, { isStatic: true }) // left
     ]);
 
-    engine.world.gravity.y = -1;
+    var scale = 0.9;
+    for (let i = 0; i < 10; i++){
+        World.add(world, Composites.car(150 + i * 10, 100 + i * 10, 150 * scale, 30 * scale, 30 * scale));
+    }
+    World.add(world, Composites.car(150, 100, 150 * scale, 30 * scale, 30 * scale));
     
-    var stack = Composites.stack(50, 120, 11, 5, 0, 0, function(x, y) {
-        switch (Math.round(Common.random(0, 1))) {
-
-        case 0:
-            if (Common.random() < 0.8) {
-                return Bodies.rectangle(x, y, Common.random(20, 50), Common.random(20, 50));
-            } else {
-                return Bodies.rectangle(x, y, Common.random(80, 120), Common.random(20, 30));
-            }
-        case 1:
-            return Bodies.polygon(x, y, Math.round(Common.random(1, 8)), Common.random(20, 50));
-
-        }
-    });
+    scale = 0.8;
+    World.add(world, Composites.car(350, 300, 150 * scale, 30 * scale, 30 * scale));
     
-    World.add(world, stack);
+    World.add(world, [
+        //Bodies.rectangle(100, 150, 400, 20, { isStatic: true, angle: Math.PI * 0.06 }),
+        Bodies.rectangle(400, 350, 200, 20, { isStatic: true}),
+        //Bodies.rectangle(100, 660, 600, 20, { isStatic: true, angle: Math.PI * 0.04 })
+    ]);
+
+    let r = setInterval(function(){
+        console.log("test");    
+        engine.world.gravity.y = (engine.world.gravity.y * -1).toFixed(2);
+        console.log("gravity = " + engine.world.gravity.y);
+    }, 2000);
 
     // add mouse control
     var mouse = Mouse.create(render.canvas),
@@ -108,10 +81,9 @@ Example.gravity = function() {
 
     // fit the render viewport to the scene
     Render.lookAt(render, {
-        min: { x: 0, y: 0 },
-        max: { x: 800, y: 600 }
+        min: { x: -200, y: 0 },
+        max: { x: 1000, y: 1000 }
     });
-
 
     // context for MatterTools.Demo
     return {
@@ -126,13 +98,4 @@ Example.gravity = function() {
     };
 };
 
-
-Example.gravity();
-
-function inverse_gravity(engine_){
-    engine_.world.gravity.y *= -1;
-
-}
-
-
-//window.setTimeout(inverse_gravity(engine), 2000);
+Example.car();
