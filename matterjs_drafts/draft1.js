@@ -140,21 +140,29 @@ var Engine = Matter.Engine,
 
 let engine;
 let world;
-var box;
+let boxes = [];
 
 function setup() {
     createCanvas(800, 600);
     engine = Engine.create();
     world = engine.world;
-    box = Bodies.rectangle(400, 200, 100, 100);
     
     Engine.run(engine);
-    World.add(world, box);
+    //box = Bodies.rectangle(400, 200, 100, 100);
+    //World.add(world, boxes);
+}
+
+function mousePressed(){
+    boxes.push(new Box(mouseX, mouseY, 50, 50, world));
+
 }
   
 function draw() {
     background(51);
-    rect(box.position.x, box.position.y, 80, 80);
+    for (let i = 0; i < boxes.length; i++){
+        boxes[i].show();
+    }
+
     console.log("hello");
     
 }
