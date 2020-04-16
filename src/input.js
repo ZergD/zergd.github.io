@@ -35,5 +35,10 @@ export default class InputHandler{
                     break;
             }
         });
+
+        // phone part
+        document.addEventListener("touchstart", event => {
+            jgame.start();
+        });
     }
 }
