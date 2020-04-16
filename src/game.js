@@ -135,6 +135,13 @@ export default class Game{
         }
         console.log("game was toggled");
     }
+
+    displayError(msg){
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(msg, this.gameWidth / 2, this.gameHeight / 2);
+    }
 }
 
 

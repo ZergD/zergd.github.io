@@ -38,7 +38,7 @@ export default class InputHandler{
 
         // phone part
         document.addEventListener("touchstart", event => {
-            jgame.start();
+            game.displayError(event.KeyCode);
         });
     }
 }
