@@ -5,9 +5,9 @@ html, body{
     margin: 0;
 }
 
-canvas{
+/* canvas{
     border: 1px solid chocolate;
-}
+} */
 
 #imgBall, #imgBrick{
     display: none;

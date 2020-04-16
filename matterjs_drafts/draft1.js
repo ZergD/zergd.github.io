@@ -141,20 +141,39 @@ var Engine = Matter.Engine,
 let engine;
 let world;
 let boxes = [];
+let ground;
+let ground_y = 1000;
 
 function setup() {
-    createCanvas(800, 600);
+    createCanvas(800, ground_y);
     engine = Engine.create();
     world = engine.world;
+    world.gravity.y = 0.9;
     
     Engine.run(engine);
+
+    let options = {
+        isStatic: true
+    }
+    ground = Bodies.rectangle(400, ground_y, 800, 20, options);
+    World.add(world, ground);
+
     //box = Bodies.rectangle(400, 200, 100, 100);
     //World.add(world, boxes);
 }
 
-function mousePressed(){
-    boxes.push(new Box(mouseX, mouseY, 50, 50, world));
+function mouseDragged(){
+    boxes.push(new Box(mouseX, mouseY, 25, 25, world));
 
+}
+
+function keyPressed(){
+    console.log(keyCode);
+
+    // 32 = space bar
+    if (keyCode === 32){
+        boxes.push(new Box(100, 100, 25, 25, world));
+    }
 }
   
 function draw() {
@@ -163,6 +182,11 @@ function draw() {
         boxes[i].show();
     }
 
-    console.log("hello");
+    noStroke(255);
+    fill(170);
+    strokeWeight(2);
+    line(0, height, width, height);
+
+    //rect(ground.position.x, ground.position.y, 700, 800);
     
 }
