@@ -19,7 +19,7 @@ export default class Game{
     constructor(gameWidth, gameHeight){
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-        this.gameState = GAMESTATE.MENU;
+        this.gameState = GAMESTATE.RUNNING;
         this.ball = new Ball(this);
         this.paddle = new Paddle(this);
         new InputHandler(this.paddle, this);
@@ -28,7 +28,7 @@ export default class Game{
         this.bricks = [];
         //this.levels = [levelTest, level0, level1]
         this.levels = [level0];
-        this.currentLevel = 0;
+        this.currentLevel = -1;
         this.msgError = "";
     }
 
