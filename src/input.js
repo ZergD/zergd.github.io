@@ -44,25 +44,35 @@ export default class InputHandler{
             }
         });
 
-        document.addEventListener("deviceorientation", event => {
-            var x = event.beta,  // En degré sur l'interval [-180,180].
-                y = event.gamma; // En degré sur l'interval [-90,90].
+        function handleOrientation(event){
+            let x = event.beta;// En degré sur l'interval [-180,180].
+            let y = event.gamma; // En degré sur l'interval [-90,90].
+            let d = document.getElementById("test_id");
+            d.innerHTML  = "beta : " + x + "\n";
+            d.innerHTML += "gamma: " + y + "\n";
+        }
 
-            if(0 < y < 90){
-                paddle.moveLeft();
-            }
-            else if (-90 < y < 0){
-                paddle.moveRight();
-            }
-            game.msgError = y;
+        document.addEventListener("deviceorientation", handleOrientation);
 
-            function p () {
-                let d = document.getElementById("test_id");
-                d.innerHTML  = "beta : " + x + "\n";
-                d.innerHTML += "gamma: " + y + "\n";
+        // document.addEventListener("deviceorientation", event => {
+        //     var x = event.beta,  // En degré sur l'interval [-180,180].
+        //         y = event.gamma; // En degré sur l'interval [-90,90].
 
-            };
-            p();
+        //     if(0 < y < 90){
+        //         paddle.moveLeft();
+        //     }
+        //     else if (-90 < y < 0){
+        //         paddle.moveRight();
+        //     }
+        //     game.msgError = y;
+
+        //     function p () {
+        //         let d = document.getElementById("test_id");
+        //         d.innerHTML  = "beta : " + x + "\n";
+        //         d.innerHTML += "gamma: " + y + "\n";
+
+        //     };
+        //     p();
 
             //resultat.innerHTML  = "beta : " + x + "<br />";
             //resultat.innerHTML += "gamma: " + y + "<br />";
@@ -81,7 +91,7 @@ export default class InputHandler{
 
             //balle.style.top  = (maxX * x / 180 - 10) + "px";
             //balle.style.left = (maxY * y / 180 - 10) + "px";
-        });
+        //});
 
         // phone part
         document.addEventListener("touchstart", event => {
