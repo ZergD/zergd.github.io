@@ -19,15 +19,16 @@ export default class Game{
     constructor(gameWidth, gameHeight){
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-        this.gameState = GAMESTATE.RUNNING;
+        this.gameState = GAMESTATE.MENU;
         this.ball = new Ball(this);
         this.paddle = new Paddle(this);
         new InputHandler(this.paddle, this);
         this.gameObjects = []
         this.lives = 3;
         this.bricks = [];
-        this.levels = [level0, level1]
-        this.currentLevel = -1;
+        //this.levels = [levelTest, level0, level1]
+        this.levels = [level0];
+        this.currentLevel = 0;
     }
 
     draw_trailShadow(){
@@ -74,7 +75,7 @@ export default class Game{
             //this.gameObjects.push(new TrailShadow(this.ball.oldPosition));
 
             // nbBricks + paddle + ball
-            if(this.gameState === GAMESTATE.VICTORY || this.bricks.length === 0){
+            if(this.gameState === GAMESTATE.VICTORY || (this.bricks.length === 0) ){
                 this.gameState = GAMESTATE.NEWLEVEL;
                 this.currentLevel ++;
                 this.start();
@@ -111,6 +112,7 @@ export default class Game{
             ctx.font = "30px Arial";
             ctx.fillStyle = "white";
             ctx.textAlign = "center";
+            ctx.fillText("Welcome to Brick Burst", this.gameWidth / 2, this.gameHeight / 2 - 200);
             ctx.fillText("Press Space Bar to start the game!", this.gameWidth / 2, this.gameHeight / 2);
         }
         

@@ -3,15 +3,13 @@
 import Brick from "/src/brick.js";
 
 export function buildLevel(game, level){
+    console.log("building level: " + level);
     let bricks = [];
 
     level.forEach((row, rowIndex) => {
         row.forEach((brick, brickIndex) => {
             if (brick !== 0){
-                brick = function (){
-                    
-                }
-
+                
                 let position = {
                     //x: 20 + 103 * brickIndex,
                     //y: 30 + 35 * rowIndex
