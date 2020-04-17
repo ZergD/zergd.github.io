@@ -8,6 +8,13 @@ export default class InputHandler{
                 case 37:
                     console.log("Left pressed...");
                     paddle.moveLeft();
+                    function p () {
+                        let d = document.getElementById("test_id");
+                        d.innerHTML  = "beta : " + event.keyCode + "\n";
+                        d.innerHTML += "gamma: " + event.keyCode + "\n";
+
+                    };
+                    p();
                     break;
                 case 39:
                     console.log("Right pressed...");
@@ -49,6 +56,13 @@ export default class InputHandler{
             }
             game.msgError = y;
 
+            function p () {
+                let d = document.getElementById("test_id");
+                d.innerHTML  = "beta : " + x + "\n";
+                d.innerHTML += "gamma: " + y + "\n";
+
+            };
+            p();
 
             //resultat.innerHTML  = "beta : " + x + "<br />";
             //resultat.innerHTML += "gamma: " + y + "<br />";
