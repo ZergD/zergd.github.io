@@ -50,6 +50,7 @@ export default class InputHandler{
             let d = document.getElementById("test_id");
             d.innerHTML  = "beta : " + x + "\n";
             d.innerHTML += "gamma: " + y + "\n";
+            game.msgError = y;
         }
 
         document.addEventListener("deviceorientation", handleOrientation);
@@ -94,9 +95,9 @@ export default class InputHandler{
         //});
 
         // phone part
-        document.addEventListener("touchstart", event => {
-            game.msgError = event.keyCode;
-        });
+        //document.addEventListener("touchstart", event => {
+        //    game.msgError = event.keyCode;
+        //});
 
     }
 }
