@@ -1,6 +1,7 @@
 export default class InputHandler{
 
     constructor(paddle, game) {
+       
         document.addEventListener("keydown", event => {
             //game.displayError(event.KeyCode);
             switch(event.keyCode){
@@ -20,7 +21,7 @@ export default class InputHandler{
                 case 32:
                     //game.start();
                     console.log("spaceBar was pressed");
-                    game.start()
+                    game.start();
                     break;
             }
         });
@@ -37,8 +38,8 @@ export default class InputHandler{
         });
 
         // phone part
-        // document.addEventListener("touchstart", event => {
-        //     game.displayError(event.KeyCode);
-        // });
+        document.addEventListener("touchstart", event => {
+            game.start();
+        });
     }
 }
