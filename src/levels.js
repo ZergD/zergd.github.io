@@ -7,13 +7,36 @@ export function buildLevel(game, level){
 
     level.forEach((row, rowIndex) => {
         row.forEach((brick, brickIndex) => {
-            if (brick == 1){
+            if (brick !== 0){
+                brick = function (){
+                    
+                }
+
                 let position = {
-                    x: 20 + 103 * brickIndex,
-                    y: 30 + 35 * rowIndex
+                    //x: 20 + 103 * brickIndex,
+                    //y: 30 + 35 * rowIndex
+                    x: 20 + 90 * brickIndex,
+                    y: 30 + 90 * rowIndex
                 };
+
+                let mapping_id_to_picture = {
+                    1 : "marc",
+                    3 : "cloak",
+                    4 : "kissy",
+                    2 : "stephane",
+                    5 : "tito",
+                    6 : "razy"
+                }
                 
-                bricks.push(new Brick(game, position));
+                // if it is cloak, make it more rectangular for the hamburger
+                if (brick === 3){
+                    let position = {
+                        x: 20 + 180 * brickIndex,
+                        y: 30 + 90 * rowIndex
+                    };
+                }
+                
+                bricks.push(new Brick(game, position, mapping_id_to_picture[brick]));
             }
         })
     })
@@ -27,9 +50,12 @@ export const levelTest = [
 ];
 
 export const level0 = [
-    [0, 1, 0],
-    [1, 1, 1],
-    [1, 1, 1]
+    [0, 1, 0, 1, 0, 0, 0],
+    [5, 5, 5, 5, 5, 5, 5],
+    [4, 4, 4, 4, 4, 4, 4],
+    [2, 2, 2, 2, 2, 2, 2],
+    [3, 0, 3, 0, 3, 0, 0],
+    [6, 6, 6, 6, 6, 6, 6]
 ];
 
 export const level1 = [

@@ -4,9 +4,11 @@ body{
 
 canvas{
     margin: 0;
+    background: rgb(32, 32, 57);
 }
 
-#imgBall, #imgBrick{
+#imgBall, #imgBrick, #imgMarc, #imgStephane,
+#imgCloak, #imgKissy, #imgTito, #imgRazyel{
     display: none;
 }
 

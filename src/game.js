@@ -19,15 +19,15 @@ export default class Game{
     constructor(gameWidth, gameHeight){
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;
-        this.gameState = GAMESTATE.MENU;
+        this.gameState = GAMESTATE.RUNNING;
         this.ball = new Ball(this);
         this.paddle = new Paddle(this);
         new InputHandler(this.paddle, this);
         this.gameObjects = []
         this.lives = 3;
         this.bricks = [];
-        this.levels = [levelTest, level0, level1]
-        this.currentLevel = 0;
+        this.levels = [level0, level1]
+        this.currentLevel = -1;
     }
 
     draw_trailShadow(){
@@ -136,12 +136,12 @@ export default class Game{
         console.log("game was toggled");
     }
 
-    displayError(msg){
-        ctx.font = "30px Arial";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.fillText(msg, this.gameWidth / 2, this.gameHeight / 2);
-    }
+    // displayError(msg){
+    //     ctx.font = "30px Arial";
+    //     ctx.fillStyle = "white";
+    //     ctx.textAlign = "center";
+    //     ctx.fillText(msg, this.gameWidth / 2, this.gameHeight / 2);
+    // }
 }
 
 
