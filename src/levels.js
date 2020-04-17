@@ -13,7 +13,7 @@ export function buildLevel(game, level){
                 let position = {
                     //x: 20 + 103 * brickIndex,
                     //y: 30 + 35 * rowIndex
-                    x: 20 + 90 * brickIndex,
+                    x: 100 + 90 * brickIndex,
                     y: 30 + 90 * rowIndex
                 };
 
@@ -48,11 +48,11 @@ export const levelTest = [
 ];
 
 export const level0 = [
-    [0, 1, 0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 0, 1, 0],
     [5, 5, 5, 5, 5, 5, 5],
-    [4, 4, 4, 4, 4, 4, 4],
-    [2, 2, 2, 2, 2, 2, 2],
-    [3, 0, 3, 0, 3, 0, 0],
+    [4, 4, 0, 0, 0, 4, 4],
+    [2, 2, 0, 0, 0, 2, 2],
+    [3, 0, 0, 0, 0, 3, 0],
     [6, 6, 6, 6, 6, 6, 6]
 ];
 
