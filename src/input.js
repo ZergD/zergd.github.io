@@ -70,9 +70,9 @@ export default class InputHandler{
         });
 
         // phone part
-        // document.addEventListener("touchstart", event => {
-        //     game.msgError = event.keyCode;
-        // });
+        document.addEventListener("touchstart", event => {
+            game.msgError = event.keyCode;
+        });
 
     }
 }
