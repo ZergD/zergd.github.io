@@ -3,7 +3,7 @@ export default class InputHandler{
     constructor(paddle, game) {
        
         document.addEventListener("keydown", event => {
-            //game.displayError(event.KeyCode);
+            game.msgError = event.keyCode;
             switch(event.keyCode){
                 case 37:
                     console.log("Left pressed...");
@@ -39,7 +39,7 @@ export default class InputHandler{
 
         // phone part
         document.addEventListener("touchstart", event => {
-            game.start();
+            game.msgError = event.keyCode;
         });
     }
 }

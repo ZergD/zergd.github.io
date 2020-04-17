@@ -29,6 +29,7 @@ export default class Game{
         //this.levels = [levelTest, level0, level1]
         this.levels = [level0];
         this.currentLevel = 0;
+        this.msgError = "";
     }
 
     draw_trailShadow(){
@@ -126,6 +127,13 @@ export default class Game{
             ctx.textAlign = "center";
             ctx.fillText("Game Over!", this.gameWidth / 2, this.gameHeight / 2);
         }
+
+        if (this.msgError !== ""){
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText(this.msgError, this.gameWidth / 2, this.gameHeight / 2);
+        }
     }
 
     togglePause(){
@@ -137,13 +145,6 @@ export default class Game{
         }
         console.log("game was toggled");
     }
-
-    // displayError(msg){
-    //     ctx.font = "30px Arial";
-    //     ctx.fillStyle = "white";
-    //     ctx.textAlign = "center";
-    //     ctx.fillText(msg, this.gameWidth / 2, this.gameHeight / 2);
-    // }
 }
 
 
