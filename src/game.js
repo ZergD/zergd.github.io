@@ -45,8 +45,8 @@ export default class Game{
         
         this.bricks = buildLevel(this, this.levels[this.currentLevel]);
 
-        // this.gameObjects = [this.ball, this.paddle];
-        this.gameObjects = [this.paddle];
+        this.gameObjects = [this.ball, this.paddle];
+        //this.gameObjects = [this.paddle];
         
         this.gameState = GAMESTATE.RUNNING;
         console.log("Game Starting... current game state = " + this.gameState);

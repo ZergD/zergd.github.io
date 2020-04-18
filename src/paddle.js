@@ -18,7 +18,7 @@ export default class Paddle{
     draw(ctx){
         ctx.fillStyle = "green";
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-        console.log("got printed at : ", this.position);
+        //console.log("got printed atdd : ", this.position);
     }
 
     moveLeft(){

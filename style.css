@@ -4,6 +4,7 @@ body{
 
 canvas{
     margin: 0;
+    border: 1px solid black;
     background: rgb(32, 32, 57);
 }
 

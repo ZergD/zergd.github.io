@@ -43,6 +43,10 @@ export default class InputHandler{
                     break;
             }
         });
+        
+        document.addEventListener("mousedown", event => {
+            console.log(event.clientX, event.clientY)
+        });
 
         function handleOrientation(event){
             let x = event.beta;// En degré sur l'interval [-180,180].
