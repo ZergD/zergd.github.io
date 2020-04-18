@@ -4,9 +4,6 @@ export default class InputHandler{
        
         document.addEventListener("keydown", event => {
             game.msgError = event.keyCode;
-            let d = document.getElementById("test_id");
-            d.innerHTML  = "beta : " + x + "\n";
-            d.innerHTML += "gamma: " + y + "\n";
             switch(event.keyCode){
                 case 37:
                     console.log("Left pressed...");
@@ -54,6 +51,12 @@ export default class InputHandler{
             d.innerHTML  = "beta : " + x + "\n";
             d.innerHTML += "gamma: " + y + "\n";
             game.msgError = y;
+            if(10 < y < 80){
+                paddle.moveRight();
+            }
+            else if (-80 < y < -10){
+                paddle.moveLeft();
+            }
         }
 
         //document.addEventListener("deviceorientation", handleOrientation);

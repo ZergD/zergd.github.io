@@ -11,13 +11,14 @@ export default class Paddle{
         
         this.position = {
             x: game.gameWidth / 2 - this.width / 2,
-            y: game.gameHeight - this.height - 10,
+            y: game.gameHeight - this.height - 10 - 200,
         }
     }
     
     draw(ctx){
         ctx.fillStyle = "green";
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        //console.log("got printed at : ", this.position);
     }
 
     moveLeft(){
