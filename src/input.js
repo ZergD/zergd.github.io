@@ -52,11 +52,13 @@ export default class InputHandler{
             d.innerHTML += "gamma: " + y + "\n";
             game.msgError = y;
 
-            if (-80 < y < -10){
+            if (-80.0 < y < -5.0){
                 paddle.moveLeft();
+                game.msgError = "moving left";
             }
-            if(10 < y < 80){
+            if(10.0 < y < 80.0){
                 paddle.moveRight();
+                game.msgError = "moving right";
             }
         }
 
