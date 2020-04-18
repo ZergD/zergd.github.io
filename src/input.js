@@ -50,16 +50,16 @@ export default class InputHandler{
             let d = document.getElementById("test_id");
             d.innerHTML  = "beta : " + x + "\n";
             d.innerHTML += "gamma: " + y + "\n";
-            game.msgError = y;
+            game.msgError = typeof(y);
 
             if (-80.0 < y < -5.0){
                 paddle.moveLeft();
-                game.msgError = "moving left";
+                //game.msgError = "moving left";
             }
-            if(10.0 < y < 80.0){
-                paddle.moveRight();
-                game.msgError = "moving right";
-            }
+            //if(10.0 < y < 80.0){
+            //    paddle.moveRight();
+            //    game.msgError = "moving right";
+            //}
         }
 
         //document.addEventListener("deviceorientation", handleOrientation);
