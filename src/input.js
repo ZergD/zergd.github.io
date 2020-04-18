@@ -50,13 +50,14 @@ export default class InputHandler{
             let d = document.getElementById("test_id");
             d.innerHTML  = "beta : " + x + "\n";
             d.innerHTML += "gamma: " + y + "\n";
-            game.msgError = typeof(y);
 
             if (y < -7) {
                 paddle.moveLeft();
+                game.msgError = "moving left";
             }
             else if(y > 7){
                 paddle.moveRight();
+                game.msgError = "moving right";
             }
         }
 

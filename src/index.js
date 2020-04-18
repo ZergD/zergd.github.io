@@ -11,7 +11,7 @@ let ctx = canvas.getContext("2d");
 // let GAME_WIDTH = canvas.width;
 // let GAME_HEIGHT = canvas.height;
 let GAME_WIDTH = 800;
-let GAME_HEIGHT = 1000;
+let GAME_HEIGHT = 900;
     
 // initialize the game
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
