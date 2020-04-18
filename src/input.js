@@ -50,14 +50,21 @@ export default class InputHandler{
             let d = document.getElementById("test_id");
             d.innerHTML  = "beta : " + x + "\n";
             d.innerHTML += "gamma: " + y + "\n";
+            let lim_bot = -7;
+            let lim_top = 7;
 
-            if (y < -7) {
+            if (y < lim_bot) {
                 paddle.moveLeft();
                 game.msgError = "moving left";
             }
             else if(y > 7){
                 paddle.moveRight();
                 game.msgError = "moving right";
+            }
+
+            // if between limits  limbot| <--- . here . ---> |limtop
+            else if ((y > lim_bot) && (y < lim_top)){
+                paddle.stop();
             }
         }
 
