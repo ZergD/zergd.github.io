@@ -56,7 +56,8 @@ export default class InputHandler{
             game.msgError = y;
         }
 
-        document.addEventListener("deviceorientation", handleOrientation);
+        //document.addEventListener("deviceorientation", handleOrientation);
+        window.addEventListener('deviceorientation', handleOrientation);
 
         // document.addEventListener("deviceorientation", event => {
         //     var x = event.beta,  // En degré sur l'interval [-180,180].

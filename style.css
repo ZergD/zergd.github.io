@@ -1,4 +1,4 @@
-/* body{
+body{
     margin: 0;
 }
 
@@ -10,7 +10,7 @@ canvas{
 #imgBall, #imgBrick, #imgMarc, #imgStephane,
 #imgCloak, #imgKissy, #imgTito, #imgRazyel{
     display: none;
-} */
+}
 
 
 /*#mainDiv{
@@ -30,7 +30,7 @@ canvas{
    */
 /* } */
 
-.garden {
+/* .garden {
     position: relative;
     width : 200px;
     height: 200px;
@@ -46,4 +46,4 @@ canvas{
     height: 20px;
     background: green;
     border-radius: 100%;
-  }
+  } */
