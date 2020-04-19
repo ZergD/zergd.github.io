@@ -11,7 +11,7 @@ export default class Paddle{
         
         this.position = {
             x: game.gameWidth / 2 - this.width / 2,
-            y: game.gameHeight - this.height - 60,
+            y: game.gameHeight - this.height - 100,
         }
     }
     

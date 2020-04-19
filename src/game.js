@@ -91,6 +91,7 @@ export default class Game{
     draw(ctx){
         // this.gameObjects.forEach(object => object.draw(ctx));
         [...this.gameObjects, ...this.bricks].forEach(object => object.draw(ctx));
+        this.displayLives(ctx);
         
 
         // draw pause screen
@@ -135,6 +136,14 @@ export default class Game{
             ctx.textAlign = "center";
             ctx.fillText(this.msgError, this.gameWidth / 2, this.gameHeight / 2 + 200);
         }
+    }
+    
+    displayLives(ctx){
+        // display lives on bot left side
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText(this.lives + " lives", 75, this.gameHeight - 100);
     }
 
     togglePause(){

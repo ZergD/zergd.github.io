@@ -17,3 +17,18 @@ function add_image(){
         mainDiv.appendChild(background_img, 0, 0);
     }
 };
+
+function display_coords_real_time(event_res, screen_position_display, ctx, canvas_width, canvas_height){
+    /*
+      event_res is object x, y, and screen_position_display where we display the results in real time. 
+    */
+    //ctx.clearRect(0, window.height - 100, 300,200);
+    ctx.clearRect(0, 0, canvas_width, canvas_height);
+    //ctx.rect(0.5, BOT_SEPARATION_HEIGHT + 1, GAME_WIDTH, GAME_HEIGHT);
+    let text = "" + event_res.x + " " + event_res.y
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(text, screen_position_display.x, screen_position_display.y);
+    
+};
