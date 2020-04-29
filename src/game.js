@@ -5,13 +5,14 @@ import Brick from '/src/brick.js';
 //import TrailShadow from "/src/trailShadow.js";
 import { buildLevel, level0, level1, levelTest } from './levels.js';
 
-const GAMESTATE = {
+export const GAMESTATE = {
     PAUSED:  0,
     RUNNING: 1,
     MENU: 2,
     GAMEOVER: 3,
     VICTORY: 4,
-    NEWLEVEL: 5
+    NEWLEVEL: 5,
+    GG: 6,
 };
 
 
@@ -27,7 +28,7 @@ export default class Game{
         this.lives = 3;
         this.bricks = [];
         //this.levels = [levelTest, level0, level1]
-        this.levels = [level0];
+        this.levels = [level1];
         this.currentLevel = -1;
         this.msgError = "";
     }
@@ -78,17 +79,24 @@ export default class Game{
 
             // nbBricks + paddle + ball
             if(this.gameState === GAMESTATE.VICTORY || (this.bricks.length === 0) ){
-                this.gameState = GAMESTATE.NEWLEVEL;
-                this.currentLevel ++;
-                this.start();
+                
+                // GG END GAME
+                if (this.currentLevel + 1 === this.levels.length){
+                    this.gameState = GAMESTATE.GG;
+                }
+                // LOAD NEXT LEVEL
+                else{
+                    this.gameState = GAMESTATE.NEWLEVEL;
+                    this.currentLevel ++;
+                    this.start();
+                }
                 
                 // console.log("Victory");
             }
-            
         }
     }
 
-    draw(ctx){
+    draw(ctx, myReqID = 0){
         // this.gameObjects.forEach(object => object.draw(ctx));
         [...this.gameObjects, ...this.bricks].forEach(object => object.draw(ctx));
         this.displayLives(ctx);
@@ -128,6 +136,20 @@ export default class Game{
             ctx.fillStyle = "white";
             ctx.textAlign = "center";
             ctx.fillText("Game Over!", this.gameWidth / 2, this.gameHeight / 2);
+        }
+        
+        // GG STATE
+        if(this.gameState == GAMESTATE.GG) {
+            ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+            ctx.fillStyle = "rgba(0, 120, 0, 1)"; 
+            ctx.fill();
+
+            ctx.font = "30px Arial";
+            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+            ctx.fillText("GG !!", this.gameWidth / 2, this.gameHeight / 2);
+            ctx.fillText("Looks like you're worthy of a special prize...", this.gameWidth / 2, this.gameHeight / 2 + 100);
+
         }
 
         if (this.msgError !== ""){

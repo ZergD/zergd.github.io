@@ -1,4 +1,6 @@
 import Game from '/src/game.js';
+import {GAMESTATE} from '/src/game.js';
+
 
 let canvas = document.getElementById("gameScreen");
 //canvas.width = window.innerWidth;
@@ -15,11 +17,17 @@ let GAME_HEIGHT = canvas.height;
     
 // initialize the game
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+// ID to cancelAnimationFrame when GG Screen
+let requestID = null;
 
 let lastTime = 0;
+let counter = 0;
+let display_gg_video_flag = false;
 //add_image();
 /////////////////////// FUNCTIONS PART ///////////////////////
-function gameLoop(timestamp) {
+function gameLoop(timestamp, stop_flag = false) {
+    console.log("looping");
+
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp
     
@@ -27,71 +35,66 @@ function gameLoop(timestamp) {
 
     game.update(deltaTime);
 
-    game.draw(ctx)
+    game.draw(ctx, requestID)
+
     
     // setTimeout(function(){
     //     requestAnimationFrame(gameLoop);
     // }, 0.1);
-    requestAnimationFrame(gameLoop);
+    
+    //console.log(counter);
+    //counter++;
+    if (game.gameState == GAMESTATE.GG){
+        console.log("looping GGGGGGGGGGGGGGG");
+        window.cancelAnimationFrame(requestID);
+
+        // time in seconds
+        let maxTime_s = 3;
+        let display = document.querySelector("#time");
+        startTimer(maxTime_s, display);
+
+
+        //canvas.style.display = "none";
+        //canvas.style.height = "200";
+        
+
+        //let vid = document.getElementById("gg_video");
+        //vid.style.display = "";
+        //vid.play();
+        
+        //requestID = window.requestAnimationFrame(function(){
+        //    gameLoop(0, True);
+        //});
+    }
+    else{
+        requestID = window.requestAnimationFrame(gameLoop);
+    }
+
+
 };
-// main game loop
-requestAnimationFrame(gameLoop);
 
-// function handleOrientation(event) {
-//     var x = event.beta;  // In degree in the range [-180,180]
-//     var y = event.gamma; // In degree in the range [-90,90]
-//   
-//     output = document.getElementById("test_id");
-//     output.innerHTML  = "beta : " + x + "\n";
-//     output.innerHTML += "gamma: " + y + "\n";
-//   
-//     // Because we don't want to have the device upside down
-//     // We constrain the x value to the range [-90,90]
-//     if (x >  90) { x =  90};
-//     if (x < -90) { x = -90};
-//   
-//     // To make computation easier we shift the range of 
-//     // x and y to [0,180]
-//     x += 90;
-//     y += 90;
-//   
-//     // 10 is half the size of the ball
-//     // It center the positioning point to the center of the ball
-//     //ball.style.top  = (maxY*y/180 - 10) + "px";
-//     //ball.style.left = (maxX*x/180 - 10) + "px";
-//   }
-//   
-//   window.addEventListener('deviceorientation', handleOrientation);
+window.requestAnimationFrame(gameLoop);
 
-// var ball   = document.querySelector('.ball');
-// var garden = document.querySelector('.garden');
-// var output = document.querySelector('.output');
-// 
-// var maxX = garden.clientWidth  - ball.clientWidth;
-// var maxY = garden.clientHeight - ball.clientHeight;
-// 
-// function handleOrientation(event) {
-//   var x = event.beta;  // In degree in the range [-180,180]
-//   var y = event.gamma; // In degree in the range [-90,90]
-// 
-//   output.innerHTML  = "beta : " + x + "\n";
-//   output.innerHTML += "gamma: " + y + "\n";
-// 
-//   // Because we don't want to have the device upside down
-//   // We constrain the x value to the range [-90,90]
-//   if (x >  90) { x =  90};
-//   if (x < -90) { x = -90};
-// 
-//   // To make computation easier we shift the range of 
-//   // x and y to [0,180]
-//   x += 90;
-//   y += 90;
-// 
-//   // 10 is half the size of the ball
-//   // It center the positioning point to the center of the ball
-//   ball.style.top  = (maxY*y/180 - 10) + "px";
-//   ball.style.left = (maxX*x/180 - 10) + "px";
-// }
-// 
-// // working example
-// window.addEventListener('deviceorientation', handleOrientation);
+console.log("last thing to do");
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            display_gg_video_flag = true;
+            console.log("timer finished");
+            let vid = document.getElementById("gg_video");
+            vid.style.display = "";
+            vid.play();
+
+        }
+    }, 1000);
+}
