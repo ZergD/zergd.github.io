@@ -23,6 +23,7 @@ let requestID = null;
 let lastTime = 0;
 let counter = 0;
 let display_gg_video_flag = false;
+let interval_clear_var = null;
 //add_image();
 /////////////////////// FUNCTIONS PART ///////////////////////
 function gameLoop(timestamp, stop_flag = false) {
@@ -79,7 +80,7 @@ console.log("last thing to do");
 
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
-    setInterval(function () {
+    interval_clear_var = setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
@@ -91,9 +92,12 @@ function startTimer(duration, display) {
         if (--timer < 0) {
             display_gg_video_flag = true;
             console.log("timer finished");
+            canvas.style.display = "none";
             let vid = document.getElementById("gg_video");
             vid.style.display = "";
+            vid.loop = true;
             vid.play();
+            clearInterval(interval_clear_var);
 
         }
     }, 1000);
