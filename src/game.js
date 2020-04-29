@@ -143,7 +143,7 @@ export default class Game{
         ctx.font = "30px Arial";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
-        ctx.fillText(this.lives + " lives", 75, this.gameHeight - 100);
+        ctx.fillText(this.lives + " lives", 75, this.gameHeight - 50);
     }
 
     togglePause(){
