@@ -27,7 +27,7 @@ let interval_clear_var = null;
 //add_image();
 /////////////////////// FUNCTIONS PART ///////////////////////
 function gameLoop(timestamp, stop_flag = false) {
-    console.log("looping");
+    //console.log("looping");
 
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp
@@ -36,7 +36,7 @@ function gameLoop(timestamp, stop_flag = false) {
 
     game.update(deltaTime);
 
-    game.draw(ctx, requestID)
+    game.draw(ctx, requestID);
 
     
     // setTimeout(function(){
@@ -46,11 +46,10 @@ function gameLoop(timestamp, stop_flag = false) {
     //console.log(counter);
     //counter++;
     if (game.gameState == GAMESTATE.GG){
-        console.log("looping GGGGGGGGGGGGGGG");
         window.cancelAnimationFrame(requestID);
 
         // time in seconds
-        let maxTime_s = 3;
+        let maxTime_s = 5;
         let display = document.querySelector("#time");
         startTimer(maxTime_s, display);
 
@@ -76,22 +75,29 @@ function gameLoop(timestamp, stop_flag = false) {
 
 window.requestAnimationFrame(gameLoop);
 
-console.log("last thing to do");
-
 function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
     interval_clear_var = setInterval(function () {
+        //ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = minutes + ":" + seconds;
+        ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+        ctx.fillStyle = "rgba(0, 120, 0, 1)"; 
+        ctx.fill();
+
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("GG !!", GAME_WIDTH / 2, GAME_HEIGHT / 2);
+        ctx.fillText("Looks like you need a reward... Wait...", GAME_WIDTH / 2, GAME_HEIGHT / 2 + 100);
+        ctx.fillText(minutes + ":" + seconds, GAME_WIDTH / 2, GAME_HEIGHT / 2 + 200);
 
         if (--timer < 0) {
             display_gg_video_flag = true;
-            console.log("timer finished");
             canvas.style.display = "none";
             let vid = document.getElementById("gg_video");
             vid.style.display = "";
